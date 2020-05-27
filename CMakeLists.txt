@@ -6,5 +6,5 @@ set(SOURCES main.cpp)
 add_subdirectory(lib)
 
 add_executable(testapp ${SOURCES})
-target_include_directories(include)
+target_include_directories(testapp PUBLIC include)
 target_link_libraries(testapp datatypes)
