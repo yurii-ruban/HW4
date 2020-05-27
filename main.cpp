@@ -3,7 +3,7 @@
 
 void checkEqual()
 {
-    std::cout << "\t\t\tDouble comparator" << std::endl;
+    std::cout << "\t\t\tequals" << std::endl;
 
     double num1 = 2.03547415;
     double num2 = 2.03547428;
@@ -23,7 +23,7 @@ void checkEqual()
 
 void checkBitsOperations()
 {
-    std::cout << "\t\t\tBits modifier" << std::endl;
+    std::cout << "\t\t\tsetBit-->revertBit" << std::endl;
 
     int masc = 12;
     const int bit = 9;
@@ -38,9 +38,37 @@ void checkBitsOperations()
     std::cout << std::endl;
 }
 
+void checkAddVector()
+{
+    std::cout << "\t\t\taddVector" << std::endl;
+
+    const int size = 5;
+
+    int source1[size] = {1, 2, 3, 4, 5};
+    int source2[size] = {-1, -2, -3, -4, -5};
+    int destination[size];
+
+    bool status = addVector(source1, source2, size, destination, size);
+
+    if(status)
+    {
+        std::cout << "The resulting array: ";
+        for(int i = 0; i < size; ++i)
+        {
+            std::cout << destination[i] << " ";
+        }
+    }
+    else
+    {
+        std::cout << "Operation failed!!!" << std::endl;
+    }
+    std::cout << std::endl;
+}
+
 int main(int argc, char** argv)
 {
     checkEqual();
     checkBitsOperations();
+    checkAddVector();
     return 0;
 }

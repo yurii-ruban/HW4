@@ -45,8 +45,17 @@ void revertBit(int& src, uint8_t bit)
     src = static_cast<int>(set.to_ulong());  
 }
 
-bool addVector(const int* src1, const int* scr2, std::size_t size_src, int* dst, std::size_t size_dst)
+/* This function writes the sum of corresponging elements from first and second arrays to the third one */
+bool addVector(const int* src1, const int* src2, std::size_t size_src, int* dst, std::size_t size_dst)
 {
-    bool result = false;
-    return result;
+    if(size_src != size_dst)
+    {
+        return false;
+    }
+
+    for(int i = 0; i < size_src; ++i)
+    {
+        dst[i] = src1[i] + src2[i];
+    }
+    return true;
 }

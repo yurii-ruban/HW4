@@ -5,7 +5,7 @@ This project contains a binary and static library with implemented custom functi
 
   
 
-## Implemented interfaces
+## Implemented functions
 
  - `bool equals (const double& a, const double& b, uint8_t precision)`--- returns true if two given numbers are equal. Precision is used to control the comparison.
 
@@ -17,6 +17,6 @@ This project contains a binary and static library with implemented custom functi
 
 ## How to check
 
-1. `cd` to root of the repository and `mkdir build`;
+1. `cd` to root of the repository and `mkdir build`
 2. `cmake -H. -Bbuild`
 3. `./build/testapp` 
