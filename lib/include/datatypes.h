@@ -3,6 +3,9 @@
 
 #include <cstdint>
 #include <bitset>
+#include <sstream>
+#include <string>
+#include <iomanip>
 
 #define BITS_PER_BYTE 8
 
