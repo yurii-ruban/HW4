@@ -1,5 +1,6 @@
 #include "datatypes.h"
 #include <iostream>
+#include <iomanip>
 
 void checkEqual()
 {
@@ -7,9 +8,9 @@ void checkEqual()
 
     double num1 = 2.03547415;
     double num2 = 2.03547428;
-    const int minPrec = 1;
+    const int minPrec = 0;
     const int maxPrec = 20;
-    const int step = 3;
+    const int step = 1;
 
     for(int i = minPrec; i < maxPrec; i += step)
     {
@@ -48,7 +49,7 @@ void checkAddVector()
     int source2[size] = {-1, -2, -3, -4, -5};
     int destination[size];
 
-    bool status = addVector(source1, source2, size, destination, size);
+    bool status = addVector(source1, source2, destination, size);
 
     if(status)
     {

@@ -3,12 +3,18 @@
 /* The function equals two doubles using it's precision */
 bool equals (const double& a, const double& b, uint8_t precision)
 {
-    std::stringstream s;
-    s << std::fixed << std::setprecision(precision) << a << ' '<< b;
-    std::string str1, str2;
-    s >> str1 >> str2;
+    /* Calculation of allowed difference coeficient, depending on precision */
+    /* I've tried to use scientific notation instead this crutch 
+       but it requires literal as power and I've got compilation error. */
 
-    return str1 == str2;
+    int diffCoef = 1;
+    while(precision-- > 0)
+    {
+        diffCoef*=SCIENTIFIC_COEFF;
+    } 
+
+    const double epsilon = SCIENTIFIC_DIVIDER / diffCoef;
+    return Abs(a - b) <= epsilon ? true : false;
 }
 
 /* The function sets a certain bit in a given number to 1 */
@@ -21,11 +27,7 @@ void setBit(int& src, uint8_t bit)
         return;
     }
 
-    std::bitset<longInBits> set(src);
-    set[bit] = 1;
-
-    /* Back conversion to int */
-    src = static_cast<int>(set.to_ulong());
+    src |= 1 << bit; // More interesting than bitsets     
 }
 
 /* The function reverts a certain bit in a given number */
@@ -39,21 +41,13 @@ void revertBit(int& src, uint8_t bit)
         return;
     }
 
-    std::bitset<longInBits> set(src);
-    !set[bit] ? set[bit] = 1 : set[bit] = 0;
-
-    src = static_cast<int>(set.to_ulong());  
+    src ^= 1 << bit;
 }
 
 /* This function writes the sum of corresponging elements from first and second arrays to the third one */
-bool addVector(const int* src1, const int* src2, std::size_t size_src, int* dst, std::size_t size_dst)
+bool addVector(const int* src1, const int* src2, int* dst, std::size_t size)
 {
-    if(size_src != size_dst)
-    {
-        return false;
-    }
-
-    for(int i = 0; i < size_src; ++i)
+    for(int i = 0; i < size; ++i)
     {
         dst[i] = src1[i] + src2[i];
     }
